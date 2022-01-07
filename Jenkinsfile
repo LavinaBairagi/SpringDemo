@@ -16,7 +16,7 @@ node {
     
     stage('Nexus') {
        nexusArtifactUploader artifacts: [[artifactId: 'demo',
- classifier: '', file: 'target/spring-demo-0.0.1-SNAPSHOT.jar',
+ classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar',
  type: 'jar']], credentialsId: 'nexus', groupId: 'com.example', 
 nexusUrl: 'host.docker.internal:8110', nexusVersion: 'nexus3',
  protocol: 'http', 
