@@ -18,12 +18,21 @@
           - java-1.8.0-openjdk.x86_64
 -
   hosts: all
+  tasks: 
+    - 
+      file: 
+        path: /download
+        state: directory
+      name: "create directory"
+-
+  hosts: all
   tasks:
     -
       maven_artifact:
         artifact_id: demo
         dest: /download
         group_id: com.example
+        version: 0.0.1
         password: 123456
         repository_url: "http://host.docker.internal:8110/repository/springdemo/"
         username: admin
