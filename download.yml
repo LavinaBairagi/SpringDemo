@@ -1,0 +1,44 @@
+---
+-
+  hosts: all
+  tasks:
+    -
+      yum:
+        update_cache: true
+      become: true
+      name: "Update APT package manager repositories cache"
+    -
+      yum:
+        name: "{{ packages }}"
+        state: present
+      become: true
+      name: "Install Java using Ansible"
+      vars:
+        packages:
+          - java-1.8.0-openjdk.x86_64
+-
+  hosts: all
+  tasks:
+    -
+      maven_artifact:
+        artifact_id: demo
+        dest: /download
+        group_id: com.example
+        password: 123456
+        repository_url: "http://host.docker.internal:8110/repository/springdemo/"
+        username: admin
+-
+  hosts: all
+  vars:
+    app_name: demo-latest
+    
+  tasks:
+  - name: create service file
+    template:
+       src: path.j2
+       dest: /etc/systemd/system/demo-latest.service
+
+  - name: start service
+    service:
+       name: demo-latest.service
+       state: restarted

@@ -1,0 +1,8 @@
+[Unit]
+Description=java {{app_name}} Application
+
+[Service]
+ExecStart=/usr/bin/java -jar /download/{{app_name}}.jar
+
+[Install]
+WantedBy=multi-user.target
