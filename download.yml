@@ -1,23 +1,6 @@
 ---
 -
   hosts: all
-  tasks:
-    -
-      yum:
-        update_cache: true
-      become: true
-      name: "Update APT package manager repositories cache"
-    -
-      yum:
-        name: "{{ packages }}"
-        state: present
-      become: true
-      name: "Install Java using Ansible"
-      vars:
-        packages:
-          - java-1.8.0-openjdk.x86_64
--
-  hosts: all
   tasks: 
     - 
       file: 
@@ -39,7 +22,7 @@
 -
   hosts: all
   vars:
-    app_name: demo-latest
+    app_name: developer-latest
     
   tasks:
   - name: create service file
