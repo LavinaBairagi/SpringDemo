@@ -22,7 +22,7 @@
 -
   hosts: all
   vars:
-    app_name: demo-latest
+    app_name: developer-latest
     
   tasks:
   - name: create service file
