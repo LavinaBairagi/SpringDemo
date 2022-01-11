@@ -1,12 +1,12 @@
 node {
     stage('Preparation') { // for display purposes
-//     git branch: 'developer',
-//         credentialsId: 'Github',
-        url: 'https://github.com/LavinaBairagi/SpringDemo.git'
+    checkout([$class: 'GitSCM',
+              branches: [[name: '*/master'], [name: '*/developer']],
+              extensions: [],
+              userRemoteConfigs: [[url: 'https://github.com/LavinaBairagi/SpringDemo.git']]])
+
         }
-    stage('something'){
-    checkout([$class: 'GitSCM', branches: [[name: '*/master'], [name: '*/developer']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/LavinaBairagi/SpringDemo.git']]])
-    }
+   
     
     stage('Build') {
                 echo 'Pulling...' + env.BRANCH_NAME
