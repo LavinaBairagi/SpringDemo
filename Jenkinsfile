@@ -4,6 +4,7 @@ node {
       not {
         branch 'master'
       }
+    }
 
       step('checkout') {
         git branch: env.BRANCH_NAME,
