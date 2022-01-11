@@ -22,7 +22,7 @@ node {
 nexusUrl: 'host.docker.internal:8110', nexusVersion: 'nexus3',
  protocol: 'http', 
 repository: 'springdemo',
- version: '0.0.1'    }
+ version: readMavenPom().getVersion()    }
  
     
     stage('ansible-deploy'){
