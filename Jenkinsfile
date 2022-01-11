@@ -1,14 +1,14 @@
 pipeline {
   agent any
   stages {
-  stage('Preparation') { // for display purposes
-    when {
-      not {
-        branch 'master'
+    stage('Preparation') { // for display purposes
+      when {
+        not {
+          branch 'master'
+        }
       }
-    }
 
-      step('checkout') {
+      steps {
         git branch: env.BRANCH_NAME,
           url: 'https://github.com/LavinaBairagi/SpringDemo.git'
       }
