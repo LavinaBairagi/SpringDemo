@@ -19,10 +19,12 @@ pipeline {
       }}
 
     stage('Package') {
+      steps{
       sh "mvn package"
-    }
+      }}
 
     stage('Nexus') {
+      steps{
       nexusArtifactUploader artifacts: [
           [artifactId: 'demo',
             classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar',
@@ -33,12 +35,12 @@ pipeline {
         protocol: 'http',
         repository: 'springdemo',
         version: '0.0.1'
-    }
+      }}
 
     stage('ansible-deploy') {
-
+steps{
       ansiblePlaybook(credentialsId: 'id_rsa', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.inv', playbook: 'download.yml')
     }
-
+    }
   }
 }
