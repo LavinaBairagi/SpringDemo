@@ -7,14 +7,16 @@ pipeline {
           branch 'master'
         }
       }
+      steps{
         git branch: env.BRANCH_NAME,
           url: 'https://github.com/LavinaBairagi/SpringDemo.git'
-      
+      }
     }
 
     stage('Build') {
+      steps{
       sh "mvn clean test"
-    }
+      }}
 
     stage('Package') {
       sh "mvn package"
