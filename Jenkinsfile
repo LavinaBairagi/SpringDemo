@@ -5,12 +5,7 @@ node {
         url: 'https://github.com/LavinaBairagi/SpringDemo.git'
         
     }
-    stage('Var') {
-        steps{
-            echo "BUILD_NUMBER =${env.BUILD_NUMBER}"
-            sh "echo BUILD_NUMBER= $BUILD_NUMBER"
-        }
-    }
+    
    
     stage('Build') {
                 sh "mvn clean test"
