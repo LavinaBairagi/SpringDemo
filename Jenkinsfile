@@ -1,7 +1,7 @@
 node {
     stage('Preparation') { // for display purposes
     git branch: 'developer',
-        credentialsId: 'Git',
+        credentialsId: 'Github',
         url: 'https://github.com/LavinaBairagi/SpringDemo.git'
         
     }
