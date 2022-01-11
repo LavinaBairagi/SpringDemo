@@ -1,9 +1,15 @@
 node {
     stage('Preparation') { // for display purposes
+   when {
+       not { branch 'master' 
+           }
    
+        step('checkout')
+        {        
 git branch: env.BRANCH_NAME, 
     url: 'https://github.com/LavinaBairagi/SpringDemo.git'
         }
+    }
     
    
     
