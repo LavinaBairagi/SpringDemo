@@ -8,6 +8,7 @@ node {
     
    
     stage('Build') {
+                echo 'Pulling...' + env.BRANCH_NAME
                 sh "mvn clean test"
     }
     
