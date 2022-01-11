@@ -1,7 +1,8 @@
 node {
     stage('Preparation') { // for display purposes
     checkout([$class: 'GitSCM',
-              branches: [[name: '*/master'], [name: '*/developer']],
+              branches:env.BRANCH_NAME
+
               extensions: [],
               userRemoteConfigs: [[url: 'https://github.com/LavinaBairagi/SpringDemo.git']]])
 
@@ -17,7 +18,7 @@ node {
    
     
     stage('Build') {
-                echo 'Pulling...' + env.BRANCH_NAME
+                echo 'Pulling...' + 
                 sh "mvn clean test"
     }
     
