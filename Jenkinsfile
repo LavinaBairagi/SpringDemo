@@ -3,8 +3,26 @@ node {
     git branch: '${env.GIT_BRANCH}',
         credentialsId: 'Github',
         url: 'https://github.com/LavinaBairagi/SpringDemo.git'
-        
-    }
+        }
+    
+    
+    stage('show branches'){
+            steps{
+                 // Define Array containing branches
+                  def BRANCHES = []
+                 // Give your path of file. Please change the path according to your requirements
+
+                 def branchesList = readFile(file: branch.txt')
+
+                 // I assumed your file contains one branch per line, that is why i split with "\n".
+                 // You can change this line as per your condition
+
+                 BRANCHES = branchesList.split("\n")                 
+
+                 for (branch in BRANCHES){
+                          println ("Branch is : ${branch}") 
+                       }
+            }
     
    
     stage('Build') {
