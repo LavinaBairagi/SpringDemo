@@ -7,12 +7,11 @@ node {
 
         }
      stage('show branches'){
-            steps{
                  branchesList = readFile(".git/branch.txt").trim()
                     echo branchesList // this line I want to get all branches
 
              // the Question is How to create an Array from branchesList
-            }
+            
         }
 
    
