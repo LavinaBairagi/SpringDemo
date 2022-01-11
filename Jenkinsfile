@@ -7,11 +7,9 @@ pipeline {
           branch 'master'
         }
       }
-
-      steps {
         git branch: env.BRANCH_NAME,
           url: 'https://github.com/LavinaBairagi/SpringDemo.git'
-      }
+      
     }
 
     stage('Build') {
