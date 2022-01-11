@@ -1,4 +1,6 @@
-node {
+pipeline {
+  agent any
+  stages {
   stage('Preparation') { // for display purposes
     when {
       not {
@@ -39,3 +41,4 @@ node {
     }
 
   }
+}
