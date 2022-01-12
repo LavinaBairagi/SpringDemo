@@ -27,11 +27,11 @@
   <distributionManagement>
 	  <snapshotRepository>
       <id>nexus</id>
-      <url>http://localhost:8110/develop-snapshot</url>
+      <url>http://host.docker.internal:8110/develop-snapshot/</url>
     </snapshotRepository>
     <repository>
       <id>nexus</id>
-      <url>http://localhost:8110/develop-snapshot/</url>
+      <url>host.docker.internal:8110/develop-snapshot/</url>
     </repository>
     
   </distributionManagement>
