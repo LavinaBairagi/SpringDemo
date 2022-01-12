@@ -36,11 +36,11 @@ pipeline {
     }
 
     stage('Nexus') {
-      when {
-        anyOf {
-          branch 'env.BRANCH_NAME/*'
-        }
-      }
+//       when {
+//         anyOf {
+//           branch 'env.BRANCH_NAME/*'
+//         }
+//       }
       steps {
         nexusArtifactUploader artifacts: [
             [artifactId: 'demo',
@@ -50,7 +50,7 @@ pipeline {
           ], credentialsId: 'nexus', groupId: 'com.example',
           nexusUrl: 'host.docker.internal:8110', nexusVersion: 'nexus3',
           protocol: 'http',
-          repository: 'springdemo',
+          repository: 'develop-snapshot',
           version: '0.0.1'
       }
     }
