@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Preparation') { // for display purposes
+    stage('Git-checkout') { // for display purposes
       when {
         not {
           branch 'master'
@@ -14,11 +14,21 @@ pipeline {
     }
 
     stage('Build') {
+      when {
+        anyOf {
+          branch 'env.BRANCH_NAME/*'
+        }
+      }
       steps{
       sh "mvn clean test"
       }}
 
     stage('Package') {
+      when {
+        not {
+          branch 'master'
+        }
+      }
       steps{
       sh "mvn package"
       }}
