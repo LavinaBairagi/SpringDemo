@@ -27,11 +27,11 @@
   <distributionManagement>
 	  <snapshotRepository>
       <id>nexus</id>
-      <urlhttp://localhost:8110/#browse/browse:develop-snapshot</url>
+      <urlhttp://localhost:8110/develop-snapshot</url>
     </snapshotRepository>
     <repository>
       <id>nexus</id>
-      <url>http://localhost:8110/#browse/browse:develop-snapshot/</url>
+      <url>http://localhost:8110/develop-snapshot/</url>
     </repository>
     
   </distributionManagement>
