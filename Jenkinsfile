@@ -13,10 +13,10 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('Clean and Test') {
       when {
         anyOf {
-          branch 'branch/*'
+          branch 'env.BRANCH_NAME'
         }
       }
       steps {
@@ -35,7 +35,7 @@ pipeline {
       }
     }
 
-    stage('Nexus') {
+    stage('Uploading on repository') {
       when {
         anyOf {
           branch 'env.BRANCH_NAME/*'
@@ -55,7 +55,7 @@ pipeline {
       }
     }
 
-    stage('ansible-deploy') {
+    stage('Deploy to target') {
       when {
         anyOf {
           branch 'env.BRANCH_NAME/*'
