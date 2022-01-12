@@ -27,7 +27,7 @@
   <distributionManagement>
 	  <snapshotRepository>
       <id>nexus</id>
-      <urlhttp://localhost:8110/develop-snapshot</url>
+      <url>http://localhost:8110/develop-snapshot</url>
     </snapshotRepository>
     <repository>
       <id>nexus</id>
