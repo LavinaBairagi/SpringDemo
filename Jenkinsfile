@@ -53,7 +53,7 @@ pipeline {
           nexusUrl: 'host.docker.internal:8110', nexusVersion: 'nexus3',
           protocol: 'http',
           repository: 'develop-snapshot',
-          version: '0.0.1-SNAPSHOT'
+          version: "${VERSION}"
       }
     }
 
