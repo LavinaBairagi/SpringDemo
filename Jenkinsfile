@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Preparation') { // for display purposes
+    stage('Git-checkout') { // for display purposes
       when {
         not {
           branch 'master'
@@ -14,18 +14,33 @@ pipeline {
     }
 
     stage('Build') {
+      when {
+        anyOf {
+          branch 'env.BRANCH_NAME/*'
+        }
+      }
       steps {
         sh "mvn clean test"
       }
     }
 
     stage('Package') {
+      when {
+        anyOf {
+          branch 'env.BRANCH_NAME/*'
+        }
+      }
       steps {
         sh "mvn package"
       }
     }
 
     stage('Nexus') {
+      when {
+        anyOf {
+          branch 'env.BRANCH_NAME/*'
+        }
+      }
       steps {
         nexusArtifactUploader artifacts: [
             [artifactId: 'demo',
@@ -41,6 +56,11 @@ pipeline {
     }
 
     stage('ansible-deploy') {
+      when {
+        anyOf {
+          branch 'env.BRANCH_NAME/*'
+        }
+      }
       steps {
         ansiblePlaybook(credentialsId: 'id_rsa', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.inv', playbook: 'download.yml')
       }
