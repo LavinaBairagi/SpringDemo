@@ -16,7 +16,7 @@ pipeline {
     stage('Build') {
       when {
         anyOf {
-          branch 'env.BRANCH_NAME/*'
+          branch: {env.BRANCH_NAME/*}
         }
       }
       steps {
