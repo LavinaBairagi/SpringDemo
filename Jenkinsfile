@@ -14,22 +14,22 @@ pipeline {
     }
 
     stage('Build') {
-      when {
-        anyOf {
-          branch 'env.BRANCH_NAME/*'
-        }
-      }
+//       when {
+//         anyOf {
+//           branch 'env.BRANCH_NAME/*'
+//         }
+//       }
       steps {
         sh "mvn clean test"
       }
     }
 
     stage('Package') {
-      when {
-        anyOf {
-          branch 'env.BRANCH_NAME/*'
-        }
-      }
+//       when {
+//         anyOf {
+//           branch 'env.BRANCH_NAME/*'
+//         }
+//       }
       steps {
         sh "mvn package"
       }
@@ -44,7 +44,7 @@ pipeline {
       steps {
         nexusArtifactUploader artifacts: [
             [artifactId: 'demo',
-              classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar',
+              classifier: '', file: 'target/demo-0.0.1.jar',
               type: 'jar'
             ]
           ], credentialsId: 'nexus', groupId: 'com.example',
