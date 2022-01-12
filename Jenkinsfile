@@ -1,6 +1,9 @@
 pipeline {
   agent any
+  environment {
   
+    VERSION = readMavenPom().getVersion()
+    }
    
   stages {
     stage('Git-checkout') { // for display purposes
@@ -18,9 +21,7 @@ pipeline {
     stage('pom') {
       steps {
         
-        pom = readMavenPom(file: 'pom.xml')
-        def pom_version = pom.version
-        echo "${pom_version}"
+        echo "${VERSION}"
         
         
       }
