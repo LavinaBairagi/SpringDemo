@@ -48,7 +48,7 @@ pipeline {
               type: 'jar'
             ]
           ], credentialsId: 'nexus', groupId: 'com.example',
-          nexusUrl: 'host.docker.internal:8110', nexusVersion: 'nexus3',
+          nexusUrl: 'host.docker.internal:8110#browse/browse:', nexusVersion: 'nexus3',
           protocol: 'http',
           repository: 'develop-snapshot',
           version: '0.0.1'
