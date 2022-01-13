@@ -1,10 +1,9 @@
 pipeline {
   agent any
   environment {
-  
     VERSION = readMavenPom().getVersion()
-    }
-   
+  }
+
   stages {
     stage('Git-checkout') { // for display purposes
       when {
@@ -18,17 +17,7 @@ pipeline {
       }
     }
 
-    stage('pom') {
-      steps {
-        
-        echo "${VERSION}"
-        
-        
-      }
-    }
-    
-    
-    stage('Build') {
+    stage('Clean and Test') {
       steps {
         sh "mvn clean test"
       }
@@ -37,11 +26,11 @@ pipeline {
     stage('Package') {
       steps {
         sh "mvn package"
-         echo "${VERSION}"
+        echo "${VERSION}"
       }
     }
 
-    stage('Nexus') {
+    stage('Uploading on repository') {
 
       steps {
         nexusArtifactUploader artifacts: [
@@ -57,7 +46,7 @@ pipeline {
       }
     }
 
-    stage('ansible-deploy') {
+    stage('Deploying on target') {
       when {
         anyOf {
           branch 'env.BRANCH_NAME/*'
