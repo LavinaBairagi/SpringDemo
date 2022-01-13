@@ -14,6 +14,7 @@ pipeline {
       steps {
         git branch: env.BRANCH_NAME,
           url: 'https://github.com/LavinaBairagi/SpringDemo.git'
+        echo 'env.BRANCH_NAME'
       }
     }
 
