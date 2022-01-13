@@ -34,12 +34,13 @@ pipeline {
     stage('Uploading on repository') {
 
       steps {
-        
-          if (env.BRANCH_NAME == 'develop') {
-                echo 'I only execute on the master branch'
-            } else {
-                echo 'I execute elsewhere'
-            }   
+        script {
+                    if (env.BRANCH_NAME == 'master') {
+                        echo 'I only execute on the master branch'
+                    } else {
+                        echo 'I execute elsewhere'
+                    }
+                } 
         
         nexusArtifactUploader artifacts: [
             [artifactId: 'demo',
