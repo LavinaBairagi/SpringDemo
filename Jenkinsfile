@@ -33,6 +33,13 @@ pipeline {
     stage('Uploading on repository') {
 
       steps {
+        
+          if (env.BRANCH_NAME == 'develop') {
+                echo 'I only execute on the master branch'
+            } else {
+                echo 'I execute elsewhere'
+            }   
+        
         nexusArtifactUploader artifacts: [
             [artifactId: 'demo',
               classifier: '', file: 'target/demo-0.0.1-SNAPSHOT.jar',
